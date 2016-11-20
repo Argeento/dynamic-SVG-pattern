@@ -1,13 +1,13 @@
 {
   "name": "dynamic-svg-pattern",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "lint": "eslint -c config/eslint/default.json src/*.js",
+    "lint": "eslint -c config/eslint/cr.json src/*.js",
     "build": "rollup -c config/rollup/es5.js"
   },
   "repository": {

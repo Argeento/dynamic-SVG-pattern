@@ -6,13 +6,14 @@ import setLineOnSVG from './setLineOnSVG';
 let spdLength = 0;
 let patternLength = 0;
 
-class Spd {
+class DynamicPattern {
 
-	constructor( svgQuery ) {
+	constructor( config ) {
 
 		this.nr = spdLength;
-		this.svgElement = getSVG( svgQuery, spdLength );
+		this.svgElement = getSVG( config.svgElement, spdLength );
 		this.height = this.svgElement.clientHeight;
+		this.offsetTop = config.svgOffsetTop;
 
 		spdLength++;
 	}
@@ -26,17 +27,23 @@ class Spd {
 		}, patternId );
 
 		this.svgElement.appendChild( pattern );
-		this.svgElement.setAttribute( 'fill', `url(#${ patternId })` );
 
 		// recalculate DOM...  magic.exe
 		this.svgElement.innerHTML = this.svgElement.innerHTML;
 
-		window.addEventListener( 'scroll', ( e ) => {
+		const setPattern = ( e ) => {
 
-			const coverage = ( window.scrollY + this.height - config.height ) / this.height;
+			const coverage = ( window.scrollY + this.height + this.offsetTop - config.height ) / this.height;
+
+			if ( coverage >= 0 && coverage <= 1 ) {
+				this.svgElement.setAttribute( 'fill', `url(#${ patternId })` );
+			}
+
 			setLineOnSVG( this.svgElement, patternId, coverage );
+		};
 
-		}, false );
+		window.addEventListener( 'scroll', setPattern );
+		window.addEventListener( 'load', setPattern );
 
 		patternLength++;
 
@@ -45,6 +52,6 @@ class Spd {
 	}
 }
 
-if ( typeof window.Spd === 'undefined' ) {
-	window.Spd = Spd;
+if ( typeof window.DynamicPattern === 'undefined' ) {
+	window.DynamicPattern = DynamicPattern;
 }

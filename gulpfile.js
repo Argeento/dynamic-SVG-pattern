@@ -32,9 +32,9 @@ gulp.task('build', () => {
 		.pipe(babel({presets: ['es2015']}))
 
 		// save
-		.pipe(banner(copyInfo))
-		.pipe(rename(`${packageInfo.name}.js`))
-		.pipe(gulp.dest('./dist'))
+		// .pipe(banner(copyInfo))
+		// .pipe(rename(`${packageInfo.name}.js`))
+		// .pipe(gulp.dest('./dist'))
 		
 
 		// save min
@@ -45,5 +45,5 @@ gulp.task('build', () => {
 });
 
 gulp.task('watch', () => {
-	gulp.watch('./src/**/*.js', ['build']);
+	gulp.watch('./src/*', ['build']);
 });
