@@ -1,0 +1,43 @@
+{
+  "name": "dynamic-svg-pattern",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "lint": "eslint -c config/eslint/default.json src/*.js",
+    "build": "rollup -c config/rollup/es5.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Argeento/dynamic-SVG-pattern.git"
+  },
+  "keywords": [
+    "SVG",
+    "dynamic",
+    "pattern",
+    "scroll"
+  ],
+  "author": {
+    "name": "Adrian Wieprzkowicz",
+    "nick": "Argeento"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Argeento/dynamic-SVG-pattern/issues"
+  },
+  "homepage": "https://github.com/Argeento/dynamic-SVG-pattern#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-banner": "^0.1.3",
+    "gulp-eslint": "^3.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rollup": "^2.5.1",
+    "gulp-uglify": "^2.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0"
+  }
+}
